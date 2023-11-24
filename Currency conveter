@@ -1,0 +1,34 @@
+def convert_currency(amount, from_currency, to_currency):
+    # Define fixed conversion rates (replace with actual rates)
+    conversion_rates = {
+        ('USD', 'EUR'): 0.85,
+        ('EUR', 'USD'): 1.18,
+        ('USD', 'GBP'): 0.74,
+        ('GBP', 'USD'): 1.35,
+        ('EUR', 'GBP'): 0.87,
+        ('GBP', 'EUR'): 1.15,
+    }
+
+    # Check if the currencies are in the conversion_rates dictionary
+    if (from_currency, to_currency) in conversion_rates:
+        converted_amount = amount * conversion_rates[(from_currency, to_currency)]
+        return converted_amount
+    else:
+        return "Conversion not supported."
+
+def main():
+    print("Welcome to the Currency Converter!")
+
+    amount = float(input("Enter the amount: "))
+    from_currency = input("Enter the source currency (e.g., USD): ").upper()
+    to_currency = input("Enter the target currency (e.g., EUR): ").upper()
+
+    converted_amount = convert_currency(amount, from_currency, to_currency)
+
+    if type(converted_amount) == float:
+        print(f"{amount} {from_currency} is equal to {converted_amount:.2f} {to_currency}.")
+    else:
+        print(converted_amount)
+
+if __name__ == "__main__":
+    main()
